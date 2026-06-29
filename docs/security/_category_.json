@@ -1,0 +1,9 @@
+{
+  "label": "Security",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Security",
+    "description": "The defensive subsystems: WAF inspection, IP/geo blocking, bot protection, fingerprinting, threat intel, and response hardening."
+  }
+}

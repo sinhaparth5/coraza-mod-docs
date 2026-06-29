@@ -1,0 +1,9 @@
+{
+  "label": "Installation",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Installation",
+    "description": "Requirements, install options, first run, running as a service, and upgrading."
+  }
+}

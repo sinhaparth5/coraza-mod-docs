@@ -75,9 +75,9 @@ type Category = {id: string; label: string; href: string; Icon: () => React.Reac
 
 const CATEGORIES: Category[] = [
   {id: 'overview',       label: 'Overview',       href: '/docs/intro',                               Icon: HomeIcon},
-  {id: 'installation',   label: 'Installation',   href: '/docs/tutorial-basics/create-a-document',  Icon: PackageIcon},
-  {id: 'configuration',  label: 'Configuration',  href: '/docs/tutorial-basics/markdown-features',  Icon: GridIcon},
-  {id: 'security',       label: 'Security',       href: '/docs/tutorial-basics/deploy-your-site',   Icon: ShieldIcon},
+  {id: 'installation',   label: 'Installation',   href: '/docs/installation/requirements',           Icon: PackageIcon},
+  {id: 'configuration',  label: 'Configuration',  href: '/docs/configuration/cli',                   Icon: GridIcon},
+  {id: 'security',       label: 'Security',       href: '/docs/security/waf',                        Icon: ShieldIcon},
   {id: 'roadmap',        label: 'Roadmap',        href: '/roadmap',                                  Icon: MapIcon},
   {id: 'resources',      label: 'Resources',      href: '/blog',                                     Icon: BookIcon},
 ];

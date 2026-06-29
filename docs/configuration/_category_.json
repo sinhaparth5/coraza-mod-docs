@@ -1,0 +1,9 @@
+{
+  "label": "Configuration",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Configuration",
+    "description": "Command-line flags, the admin dashboard, TLS, rate limiting, logs, and metrics."
+  }
+}
