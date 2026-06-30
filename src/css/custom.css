@@ -386,9 +386,83 @@ a.menu__link--active:not(.menu__link--sublist) {
 
 /* ── Admonitions (callout boxes) ───────────────────────────────────────────── */
 
+/* Base: strip the weak default border, replace with a bold left bar only */
 .alert {
-  border-radius: 0.625rem !important;
-  border-left-width: 3px !important;
+  border-radius: 0.75rem !important;
+  border: none !important;
+  border-left: 4px solid var(--ifm-alert-border-color) !important;
+  padding: 1rem 1.25rem 1rem 1.375rem !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* :::tip — brand green */
+.alert--tip {
+  --ifm-alert-background-color: #edfbf4;
+  --ifm-alert-foreground-color: #15503a;
+  --ifm-alert-border-color: #3dbd72;
+}
+
+/* :::info — brand navy */
+.alert--info {
+  --ifm-alert-background-color: #edf5fb;
+  --ifm-alert-foreground-color: #1a3a4e;
+  --ifm-alert-border-color: #2b5c74;
+}
+
+/* :::warning — amber */
+.alert--warning {
+  --ifm-alert-background-color: #fffbeb;
+  --ifm-alert-foreground-color: #7c4a03;
+  --ifm-alert-border-color: #d97706;
+}
+
+/* :::danger — red */
+.alert--danger {
+  --ifm-alert-background-color: #fff5f5;
+  --ifm-alert-foreground-color: #9f1239;
+  --ifm-alert-border-color: #e11d48;
+}
+
+/* :::note — slate */
+.alert--secondary {
+  --ifm-alert-background-color: #f8fafc;
+  --ifm-alert-foreground-color: #334155;
+  --ifm-alert-border-color: #64748b;
+}
+
+/* Dark mode */
+[data-theme='dark'] .alert {
+  box-shadow: none !important;
+}
+
+[data-theme='dark'] .alert--tip {
+  --ifm-alert-background-color: rgba(61, 189, 114, 0.09);
+  --ifm-alert-foreground-color: #9fe0b7;
+  --ifm-alert-border-color: #3dbd72;
+}
+
+[data-theme='dark'] .alert--info {
+  --ifm-alert-background-color: rgba(43, 92, 116, 0.18);
+  --ifm-alert-foreground-color: #7ab8d4;
+  --ifm-alert-border-color: #4a7b96;
+}
+
+[data-theme='dark'] .alert--warning {
+  --ifm-alert-background-color: rgba(217, 119, 6, 0.11);
+  --ifm-alert-foreground-color: #fbbf24;
+  --ifm-alert-border-color: #d97706;
+}
+
+[data-theme='dark'] .alert--danger {
+  --ifm-alert-background-color: rgba(225, 29, 72, 0.1);
+  --ifm-alert-foreground-color: #fb7185;
+  --ifm-alert-border-color: #e11d48;
+}
+
+[data-theme='dark'] .alert--secondary {
+  --ifm-alert-background-color: rgba(100, 116, 139, 0.1);
+  --ifm-alert-foreground-color: #94a3b8;
+  --ifm-alert-border-color: #64748b;
 }
 
 /* ── Sidebar enhancements ──────────────────────────────────────────────────── */

@@ -24,6 +24,14 @@ than merely score. This is handled internally.
 
 ## Disabling a noisy rule
 
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_waf_rules.png"
+    alt="WAF Rules page showing the Disable Rule form with CRS Rule ID and reason fields, Top Firing Rules analytics table with hit counts, and the Disabled Rules list"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
+
 The **WAF Rules** page (`/admin/waf-rules`) lists CRS rules. Disable a rule by ID with a reason
 (`POST /admin/waf-rules/disable` with `rule_id`, `reason`) and re-enable it
 (`DELETE /admin/waf-rules/:id`). The WAF engine rebuilds itself from the current disabled-rule list,

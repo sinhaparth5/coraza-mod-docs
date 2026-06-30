@@ -132,122 +132,6 @@ const STATS = [
   {value: '30+', unit: 'attack types', label: 'Blocked by embedded OWASP CRS'},
 ];
 
-const CHART_BARS = [55, 70, 40, 85, 60, 75, 45, 90, 65, 50, 80, 62];
-
-// ── Browser Mockup ─────────────────────────────────────────────────────────
-
-function BrowserMockup() {
-  return (
-    <div className={styles.browser}>
-      <div className={styles.browserBar}>
-        <div className={styles.browserDots}>
-          <span className={`${styles.dot} ${styles.dotRed}`} />
-          <span className={`${styles.dot} ${styles.dotYellow}`} />
-          <span className={`${styles.dot} ${styles.dotGreen}`} />
-        </div>
-        <div className={styles.browserNav}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M10.757 12L15.707 16.95a1 1 0 1 1-1.414 1.414l-5.657-5.657a1 1 0 0 1 0-1.414l5.657-5.657a1 1 0 1 1 1.414 1.414L10.757 12z"
-              fill="#94A3B8"
-            />
-          </svg>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M13.243 12L8.293 7.05a1 1 0 0 1 1.414-1.414l5.657 5.657a1 1 0 0 1 0 1.414L9.707 18.364a1 1 0 0 1-1.414-1.414L13.243 12z"
-              fill="#475569"
-            />
-          </svg>
-        </div>
-        <div className={styles.browserUrl}>
-          <span className={styles.browserUrlText}>coraza-waf-mod/admin</span>
-        </div>
-      </div>
-
-      <div className={styles.browserBody}>
-        {/* Sidebar */}
-        <div className={styles.browserSidebar}>
-          <div className={styles.sidebarLogo} />
-          <div className={styles.sidebarCircle} />
-          <div className={`${styles.sidebarPill} ${styles.sidebarPillActive}`} />
-          <div className={styles.sidebarPill} />
-          <div className={styles.sidebarPillShort} />
-          <div className={styles.sidebarPill} />
-          <div className={styles.sidebarPillShort} />
-          <div className={styles.sidebarPill} />
-        </div>
-
-        {/* Main content */}
-        <div className={styles.browserMain}>
-          {/* Top row: stat cards */}
-          <div className={styles.dashTopRow}>
-            <div className={styles.dashCard}>
-              <div className={styles.dashCardBar} />
-              <div className={styles.dashCardBarShort} />
-            </div>
-            <div className={`${styles.dashCard} ${styles.dashCardAccent}`}>
-              <div className={styles.dashCardBar} />
-              <div className={styles.dashCardBarShort} />
-            </div>
-            <div className={styles.dashCard}>
-              <div className={styles.dashCardBar} />
-              <div className={styles.dashCardBarShort} />
-            </div>
-          </div>
-
-          {/* Chart area */}
-          <div className={styles.dashChartRow}>
-            <div className={styles.dashChart}>
-              {CHART_BARS.map((h, i) => (
-                <div
-                  key={i}
-                  className={`${styles.dashBar} ${i === 7 ? styles.dashBarAccent : ''}`}
-                  style={{height: `${h}%`}}
-                />
-              ))}
-            </div>
-            <div className={styles.dashSide}>
-              <div className={styles.dashSideCircleWrap}>
-                <svg width="45" height="44" viewBox="0 0 45 44" fill="none" aria-hidden="true">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M22.1 39.4C32.1 39.4 40.2 31.3 40.2 21.7S32.1 4 22.1 4 4 12.1 4 21.7s8.1 17.7 18.1 17.7zM22.1 42C33.5 42 42.7 32.9 42.7 21.7S33.5 1.4 22.1 1.4 1.5 10.5 1.5 21.7 10.7 42 22.1 42z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <div className={styles.dashSideLines}>
-                <div className={styles.dashSideLine} />
-                <div className={styles.dashSideLineLong} />
-                <div className={styles.dashSideLine} />
-              </div>
-            </div>
-          </div>
-
-          {/* Log rows */}
-          <div className={styles.dashLogs}>
-            {[
-              {blocked: true, wide: false},
-              {blocked: false, wide: true},
-              {blocked: true, wide: false},
-              {blocked: false, wide: true},
-            ].map((row, i) => (
-              <div key={i} className={styles.dashLogRow}>
-                <div
-                  className={`${styles.dashLogDot} ${row.blocked ? styles.dashLogDotBlocked : styles.dashLogDotOk}`}
-                />
-                <div className={styles.dashLogMethod} />
-                <div className={`${styles.dashLogPath} ${row.wide ? styles.dashLogPathWide : ''}`} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ── Sections ───────────────────────────────────────────────────────────────
 
 function HeroSection() {
@@ -289,7 +173,11 @@ function HeroSection() {
       </div>
 
       <div className={styles.heroBrowserWrap}>
-        <BrowserMockup />
+        <img
+          src="/img/hero_image.png"
+          alt="Coraza WAF Mod admin dashboard"
+          className={styles.heroImage}
+        />
       </div>
 
       {/* Wave transition to white */}
@@ -362,40 +250,27 @@ function ArchitectureSection() {
   return (
     <section className={styles.architecture}>
       <div className={styles.sectionInner}>
-        <div className={styles.archGrid}>
-          <div className={styles.archText}>
-            <Heading as="h2" className={styles.archTitle}>
-              Built for the request path
-            </Heading>
-            <p className={styles.archDesc}>
-              Every request passes through a strict pipeline before reaching any backend. Each stage logs
-              asynchronously to a buffered SQLite queue, so the hot path is never blocked.
-            </p>
-            <ul className={styles.archList}>
-              <li>Bot challenge gate with JS proof-of-work</li>
-              <li>IP blocklist and token-bucket rate limiting</li>
-              <li>GeoIP2 country check against bundled database</li>
-              <li>Coraza WAF inspection with OWASP CRS 4.x</li>
-              <li>Reverse proxy with prefix strip or host routing</li>
-            </ul>
-          </div>
-
-          <div className={styles.archDiagram}>
-            <div className={styles.archNode}>Client</div>
-            <div className={styles.archArrowDown} aria-hidden="true" />
-            <div className={`${styles.archNode} ${styles.archNodePrimary}`}>
-              Coraza WAF + Proxy
-            </div>
-            <div className={styles.archSplit} aria-hidden="true">
-              <div className={styles.archSplitLine} />
-              <div className={styles.archSideNode}>SQLite DB</div>
-              <div className={styles.archSplitLine} />
-              <div className={styles.archSideNode}>Admin UI</div>
-            </div>
-            <div className={styles.archArrowDown} aria-hidden="true" />
-            <div className={styles.archNode}>Backend Apps</div>
-          </div>
+        <div className={styles.archHeader}>
+          <Heading as="h2" className={styles.archTitle}>
+            Built for the request path
+          </Heading>
+          <p className={styles.archDesc}>
+            Every request passes through a strict pipeline before reaching any backend. Each stage
+            logs asynchronously to a buffered SQLite queue, so the hot path is never blocked.
+          </p>
+          <ul className={styles.archList}>
+            <li>Bot challenge gate with JS proof-of-work</li>
+            <li>IP blocklist and token-bucket rate limiting</li>
+            <li>GeoIP2 country check against bundled database</li>
+            <li>Coraza WAF inspection with OWASP CRS 4.x</li>
+            <li>Reverse proxy with prefix strip or host routing</li>
+          </ul>
         </div>
+        <img
+          src="/img/arch_diagram.png"
+          alt="Coraza WAF Mod request pipeline: Client → Bot Gate → IP Blocklist → Rate Limiting → Geo Blocking → WAF Inspection → Reverse Proxy → Backend Applications"
+          className={styles.archImage}
+        />
       </div>
     </section>
   );
@@ -407,15 +282,25 @@ function InstallSection() {
       <div className={styles.sectionInner}>
         <div className={styles.installInner}>
           <Heading as="h2" className={styles.sectionTitle}>
-            Up and running in seconds
+            Up and running in minutes
           </Heading>
           <p className={styles.sectionSubtitle}>
-            The installer downloads the binary for your architecture, creates a system user with{' '}
-            <code>CAP_NET_BIND_SERVICE</code>, and registers a systemd unit.
+            The installer detects your architecture, verifies the SHA-256 checksum, creates a
+            dedicated non-root system user with <code>CAP_NET_BIND_SERVICE</code>, and registers
+            three systemd units (service + log-prune timer).
           </p>
           <div className={styles.codeBlock}>
-            <span className={styles.codePrompt}>$</span>
-            {' curl -fsSL https://install.example.com | sudo bash'}
+            <div>
+              <span className={styles.codePrompt}>$</span>
+              {' curl -fsSL -o install.sh \\'}
+            </div>
+            <div>
+              {'    https://gitlab.com/sinhaparth5/coraza-waf-mod/-/raw/main/deploy/install.sh'}
+            </div>
+            <div>
+              <span className={styles.codePrompt}>$</span>
+              {' sudo bash install.sh'}
+            </div>
           </div>
           <p className={styles.installNote}>
             Or build from source: <code>git clone</code> the repo and run <code>make build</code>.

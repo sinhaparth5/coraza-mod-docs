@@ -12,18 +12,13 @@ A single-binary **Web Application Firewall + reverse proxy** for Linux, built in
 HTMX/Tailwind admin dashboard. There is **no Docker requirement, no external database, and no
 Node toolchain** — one binary, one SQLite file.
 
-```
-                    ┌─────────────────────────────────────────────┐
-   [ Client ]  ───► │  Coraza WAF + Reverse Proxy (single binary)  │ ───►  [ Backend App(s) ]
-                    │                                             │
-                    │   bot gate → IP block → rate limit →        │
-                    │   geo block → WAF inspect → proxy           │
-                    └───────────────┬─────────────────────────────┘
-                                    │  ▲
-                              [ SQLite waf.db ]
-                                    │  ▲
-                          [ HTMX / Tailwind Admin Dashboard ]
-```
+<div style={{textAlign: 'center', margin: '2rem 0'}}>
+  <img
+    src="/img/arch_diagram_white-bg.png"
+    alt="Coraza WAF Mod Architecture: User Request → Cloudflare → OS Firewall → Coraza WAF Proxy (with SQLite waf.db and HTMX/Tailwind Admin Dashboard) → Application Service"
+    style={{maxWidth: '100%', borderRadius: '0.5rem'}}
+  />
+</div>
 
 ## What it does
 

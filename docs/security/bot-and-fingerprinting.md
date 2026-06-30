@@ -24,6 +24,14 @@ Tune the global challenger (enabled, threshold, TTL) under **Settings → Bot pr
 per-service overrides from each service's Manage panel. See the
 [dashboard walkthrough](/docs/configuration/dashboard).
 
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_bot_protection.png"
+    alt="Bot Protection settings panel showing the enable toggle, anomaly threshold field set to 8, and bypass cookie TTL field set to 3600 seconds"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
+
 ## JA3 TLS fingerprinting
 
 JA3 fingerprints are computed at the **TLS handshake** and made available to the request handler,

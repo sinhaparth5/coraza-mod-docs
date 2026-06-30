@@ -143,292 +143,14 @@
   display: block;
 }
 
-/* ── Browser Mockup ──────────────────────────────────────────────────────── */
+/* ── Hero Image ──────────────────────────────────────────────────────────── */
 
-.browser {
-  background: #fff;
-  border-radius: 1.25rem;
-  border: 5px solid #1a3a4a;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28), 0 10px 0 rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-}
-
-.browserBar {
-  background: #f4f7f9;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  height: 41px;
-  border-bottom: 1px solid #e2e5ea;
-  flex-shrink: 0;
-}
-
-.browserDots {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.heroImage {
+  width: 100%;
+  height: auto;
   display: block;
-}
-
-.dotRed {
-  background: #e11d48;
-}
-
-.dotYellow {
-  background: #fbbf24;
-}
-
-.dotGreen {
-  background: #22c55e;
-}
-
-.browserNav {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  flex-shrink: 0;
-}
-
-.browserUrl {
-  flex: 1;
-  background: #eaebed;
-  border-radius: 5px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  padding: 0 0.75rem;
-  max-width: 495px;
-  margin: 0 auto;
-}
-
-.browserUrlText {
-  font-size: 0.75rem;
-  color: #8a9ab0;
-  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-}
-
-.browserBody {
-  display: flex;
-  background: #f4f7f9;
-  height: 300px;
-}
-
-/* Sidebar */
-.browserSidebar {
-  width: 184px;
-  background: #2b5c74;
-  flex-shrink: 0;
-  padding: 1.375rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-
-.sidebarLogo {
-  height: 22px;
-  background: #76c893;
-  border-radius: 999px;
-  margin-bottom: 0.5rem;
-  opacity: 0.9;
-}
-
-.sidebarCircle {
-  width: 29px;
-  height: 29px;
-  border-radius: 50%;
-  border: 2.5px solid rgba(118, 200, 147, 0.6);
-  margin-bottom: 0.25rem;
-}
-
-.sidebarPill {
-  height: 11px;
-  background: rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-}
-
-.sidebarPillActive {
-  background: rgba(118, 200, 147, 0.7);
-}
-
-.sidebarPillShort {
-  height: 11px;
-  width: 70%;
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-}
-
-/* Main dashboard area */
-.browserMain {
-  flex: 1;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.dashTopRow {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.dashCard {
-  flex: 1;
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-  border: 1px solid #e2e5ea;
-}
-
-.dashCardAccent {
-  border-top: 3px solid #76c893;
-}
-
-.dashCardBar {
-  height: 10px;
-  background: #b0bec8;
-  border-radius: 3px;
-  width: 55%;
-}
-
-.dashCardBarShort {
-  height: 8px;
-  background: #d4dce4;
-  border-radius: 3px;
-  width: 75%;
-}
-
-.dashChartRow {
-  display: flex;
-  gap: 0.75rem;
-  flex: 1;
-  min-height: 0;
-}
-
-.dashChart {
-  flex: 1;
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 0.75rem 0.75rem 0.5rem;
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  border: 1px solid #e2e5ea;
-}
-
-.dashBar {
-  flex: 1;
-  background: #9fe0b7;
-  border-radius: 3px 3px 0 0;
-  min-width: 0;
-  min-height: 4px;
-}
-
-.dashBarAccent {
-  background: #2a9d8f;
-}
-
-.dashSide {
-  width: 184px;
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 0.875rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.625rem;
-  flex-shrink: 0;
-  border: 1px solid #e2e5ea;
-}
-
-.dashSideCircleWrap {
-  align-self: flex-end;
-}
-
-.dashSideLines {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.dashSideLine {
-  height: 11px;
-  background: #eaf7ee;
-  border-radius: 999px;
-  width: 70%;
-}
-
-.dashSideLineLong {
-  height: 11px;
-  background: #eaf7ee;
-  border-radius: 999px;
-  width: 100%;
-}
-
-.dashLogs {
-  background: #fff;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  border: 1px solid #e2e5ea;
-}
-
-.dashLogRow {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4375rem 0.75rem;
-  border-bottom: 1px solid #f4f7f9;
-}
-
-.dashLogRow:last-child {
-  border-bottom: none;
-}
-
-.dashLogDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.dashLogDotBlocked {
-  background: #e11d48;
-}
-
-.dashLogDotOk {
-  background: #76c893;
-}
-
-.dashLogMethod {
-  height: 8px;
-  width: 28px;
-  background: #e2e5ea;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.dashLogPath {
-  height: 8px;
-  width: 120px;
-  background: #eaebed;
-  border-radius: 2px;
-}
-
-.dashLogPathWide {
-  width: 180px;
+  border-radius: 1rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32), 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 /* ── Stats ────────────────────────────────────────────────────────────────── */
@@ -563,16 +285,13 @@
   padding: 6rem 1.5rem;
 }
 
-.archGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-.archText {
+.archHeader {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -597,14 +316,15 @@
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
 }
 
 .archList li {
-  font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.7);
-  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding-left: 1rem;
   position: relative;
   line-height: 1.5;
 }
@@ -614,77 +334,22 @@
   position: absolute;
   left: 0;
   top: 0.55em;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #76c893;
 }
 
-.archDiagram {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.archNode {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.625rem;
-  padding: 0.75rem 2rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-  text-align: center;
-  min-width: 220px;
-}
-
-.archNodePrimary {
-  background: rgba(118, 200, 147, 0.15);
-  border-color: rgba(118, 200, 147, 0.45);
-  color: #9fe0b7;
-}
-
-.archArrowDown {
-  width: 1px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.18);
-  position: relative;
-}
-
-.archArrowDown::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: -4px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 6px solid rgba(255, 255, 255, 0.18);
-}
-
-.archSplit {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.archSplitLine {
-  width: 24px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.archSideNode {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.875rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
-  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-  white-space: nowrap;
+.archImage {
+  width: 75%;
+  max-width: 860px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.07);
 }
 
 /* ── Install ──────────────────────────────────────────────────────────────── */
@@ -711,7 +376,7 @@
   font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
   font-size: 0.9375rem;
   color: #cde8f5;
-  width: 100%;
+  width: min(820px, 90vw);
   text-align: left;
   white-space: pre;
   overflow-x: auto;
@@ -823,13 +488,8 @@
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 1024px) {
-  .archGrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .archDiagram {
-    order: -1;
+  .archHeader {
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -870,19 +530,6 @@
 
   .featuresGrid {
     grid-template-columns: 1fr;
-  }
-
-  .browserBody {
-    height: 240px;
-  }
-
-  .browserSidebar {
-    width: 120px;
-    padding: 1rem;
-  }
-
-  .dashSide {
-    display: none;
   }
 }
 

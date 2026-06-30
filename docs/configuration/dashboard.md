@@ -17,6 +17,14 @@ writes the change to `waf.db` and then **hot-reloads** the relevant subsystem (r
 geo, WAF engine, rate limiter). The steps below are the implementation.
 :::
 
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_dashboard.png"
+    alt="Coraza WAF Mod dashboard home — live traffic chart, requests today, blocked today, bot shield summary, and top threats panel"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
+
 ## Services (backend apps) — *what gets proxied*
 
 **Page:** `/admin/services` · **Purpose:** define which backend each incoming request is routed to.
@@ -36,6 +44,14 @@ geo, WAF engine, rate limiter). The steps below are the implementation.
    reachability probe** — if the backend is unreachable, the save is rejected with an inline error
    ("fix the backend or try again before adding"). This prevents adding dead upstreams.
 4. On success the routing registry is rebuilt instantly and the new row appears.
+
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_service.png"
+    alt="Services page showing the Add Service wizard on the left and the configured services list on the right with host match, TLS, rate limit, and bot mode controls per row"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
 
 **Behavior to know:**
 
@@ -74,6 +90,14 @@ on change. See [IP & Geo Blocking](/docs/security/blocking) for how they fit the
    request from that IP is affected.
 4. **Remove** a rule with the row's delete control (`DELETE /admin/ip-rules/:id`).
 
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_ip_rules.png"
+    alt="IP Rules page — Add IP Rule form on the left with IP/CIDR input, scope selector, and block/allow toggle; Active IP Rules list on the right with rules overview stats"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
+
 These manual rules are evaluated alongside the IPs pulled in automatically by
 [threat-intel sync](/docs/security/threat-intel-webhooks).
 
@@ -90,6 +114,14 @@ These manual rules are evaluated alongside the IPs pulled in automatically by
    [resolved real client IP](/docs/security/trusted-proxy) using the bundled GeoLite2 database, so it
    works correctly behind Cloudflare / a trusted proxy.
 4. **Remove** with the row's delete control (`DELETE /admin/geo-rules/:id`).
+
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_geo_block.png"
+    alt="Geo Rules page — Add Geo Rule form with country code input and block/allow selector; Active Geo Rules list showing a CN block rule with global scope and rules overview stats"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
 
 **Routes:** `GET /geo-rules`, `POST /geo-rules` (`app_name`, `country_code`, `rule_type`),
 `DELETE /geo-rules/:id`.
@@ -150,6 +182,14 @@ autocert → global fallback.**
 history queried directly from SQLite (so you can page deep without the stream interfering). You can
 force history mode with `?mode=history`.
 
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_logs.png"
+    alt="Live Logs page showing the live stream active indicator, date/app/status filters, and the request log table with time, app, IP, method, path, status, and duration columns"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
+
 **Filtering.** Use the filter controls; they map to query parameters on `GET /admin/logs`:
 
 | Filter | Param | Example |
@@ -165,6 +205,14 @@ force history mode with `?mode=history`.
 **Detail view.** Click a row to open `GET /admin/logs/:id` — full request headers, the matched WAF
 rule (if any), the block reason/stage, status, and the resolved country/ASN.
 
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_logs_detail.png"
+    alt="Log detail view showing timestamp, app/service, host, real client IP vs proxy/CDN IP, country, query string, user agent, request ID, ASN, ISP/organisation, and TLS connection details"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
+
 **Export.** The **Export** button hits `GET /admin/logs/export` with the *same* filter query params
 and downloads a CSV of the matching rows — so you can export exactly what you've filtered to.
 
@@ -176,6 +224,14 @@ and downloads a CSV of the matching rows — so you can export exactly what you'
 ## Settings
 
 **Page:** `/admin/settings` · **Purpose:** admin account, security subsystems, and integrations.
+
+<div style={{margin: '1.5rem 0'}}>
+  <img
+    src="/img/docs/docs_settings.png"
+    alt="Settings page showing the Account section with current email, new email, new password, and confirm password fields, plus the Database backup download button"
+    style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
+  />
+</div>
 
 **Change admin credentials.** Enter your **current password**, then a **new email** and/or **new
 password** (typed twice). Submitting (`POST /admin/settings/credentials` with `current_password`,
