@@ -11,7 +11,7 @@ The dashboard lives at `/admin` and is behind session-cookie login. Every change
 the page. This section walks through **every feature and exactly how to use it**, including the
 underlying HTTP routes (handy if you want to script against them).
 
-:::info How "implement" works here
+:::info[How "implement" works here]
 You don't edit files or restart anything to use a feature. Each dashboard form maps to a route that
 writes the change to `waf.db` and then **hot-reloads** the relevant subsystem (registry, blocklist,
 geo, WAF engine, rate limiter). The steps below are the implementation.
@@ -126,7 +126,7 @@ These manual rules are evaluated alongside the IPs pulled in automatically by
 **Routes:** `GET /geo-rules`, `POST /geo-rules` (`app_name`, `country_code`, `rule_type`),
 `DELETE /geo-rules/:id`.
 
-:::note WAF rule blocks (related)
+:::note[WAF rule blocks (related)]
 The **WAF Rules** page (`/admin/waf-rules`) lists CRS rules and lets you **disable** a noisy rule by
 ID with a reason (`POST /admin/waf-rules/disable` with `rule_id`, `reason`) and re-enable it
 (`DELETE /admin/waf-rules/:id`). The WAF engine rebuilds itself from the current disabled-rule list,

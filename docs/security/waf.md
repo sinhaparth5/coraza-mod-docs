@@ -16,7 +16,7 @@ description: Coraza v3 with the OWASP Core Rule Set compiled in — what it bloc
   list from the database and rebuilds itself live), so you can silence a noisy rule without editing
   files or restarting.
 
-:::warning Important engine behavior
+:::warning[Important engine behavior]
 The recommended Coraza config ships in `DetectionOnly` mode by default, and the project deliberately
 enables blocking (`SecRuleEngine On`) **after** the CRS includes so that rules actually block rather
 than merely score. This is handled internally.

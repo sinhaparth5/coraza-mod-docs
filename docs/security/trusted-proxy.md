@@ -16,7 +16,7 @@ The client IP used for blocklist, geo, rate limiting, and logging is resolved by
 **Forwarded headers are never trusted by default.** Without `--trusted-proxies`, a direct client
 cannot forge its source IP to evade IP/geo blocks or reset its rate-limit bucket.
 
-:::warning All clients showing the same IP?
+:::warning[All clients showing the same IP?]
 If all clients appear to share one IP (and rate limiting blocks everyone), you're likely behind a
 proxy or load balancer but haven't set `--trusted-proxies`, so the real client IP isn't being read
 from `X-Forwarded-For`. Add the proxy's CIDR to `--trusted-proxies`. Conversely, if you set

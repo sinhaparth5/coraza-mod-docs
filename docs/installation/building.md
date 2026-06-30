@@ -22,7 +22,7 @@ Run a single package's tests:
 go test ./proxy/ -run TestName -v
 ```
 
-:::warning Always use `make build` after editing JS
+:::warning[Always use make build after editing JS]
 Never run bare `go build` after editing JavaScript in `static/js/src/*.js` — the minifier runs via
 `go generate`, which `make build` triggers but `go build` does not. Use `make build`, or run
 `go generate ./...` first.

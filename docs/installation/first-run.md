@@ -16,7 +16,7 @@ For a **manual / source install**:
    printf 'your-strong-password\n' | ./coraza-waf-mod setup \
      --db ./waf.db --admin-email you@example.com
    ```
-   :::warning Default dev credentials are insecure
+   :::warning[Default dev credentials are insecure]
    If you start the server **without** running `setup`, a development fallback admin
    (`admin@localhost` / `admin123`) is seeded and printed in the logs. **Do not rely on this in
    production** — always run `setup` to create real credentials and change the default.

@@ -8,7 +8,7 @@ description: Three ways to install — the one-line installer, building from sou
 
 ## Option A — One-line installer (download, then run)
 
-:::tip Recommended pattern: download the script first, then run it.
+:::tip[Recommended pattern: download the script first, then run it.]
 The installer is **interactive** (it prompts for admin email, password, and an optional domain).
 Piping `curl … | sudo bash` can break that interactivity and is also fragile if the connection is
 slow — a stalled pipe can time out mid-install. Downloading the script to disk first and running it
@@ -65,7 +65,7 @@ The dashboard is then reachable at **`https://<your-domain-or-server-ip>/admin`*
 self-signed certificate, your browser will show a security warning the first time — accept the
 exception. You can later switch to a trusted certificate from **Settings → TLS**.
 
-:::note Note on the download URL
+:::note[Note on the download URL]
 The path above points at the project's GitLab repository
 (`gitlab.com/sinhaparth5/coraza-waf-mod`). If you host releases elsewhere, change the URL to wherever
 `deploy/install.sh` and the release binaries are actually published.
@@ -92,7 +92,7 @@ printf 'your-strong-password\n' | ./coraza-waf-mod setup \
 ./coraza-waf-mod --db ./waf.db --listen :8080
 ```
 
-:::warning Build note
+:::warning[Build note]
 Never run bare `go build` after editing JavaScript in `static/js/src/*.js` — the minifier runs via
 `go generate`, which `make build` triggers but `go build` does not. Use `make build`, or run
 `go generate ./...` first.
