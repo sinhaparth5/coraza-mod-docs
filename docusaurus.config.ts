@@ -2,6 +2,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const SITE_URL = 'https://waf.astrareconslabs.com';
+
 const config: Config = {
   title: 'Coraza WAF Mod',
   tagline: 'One binary. Full WAF protection.',
@@ -11,7 +13,7 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://your-docusaurus-site.example.com',
+  url: SITE_URL,
   baseUrl: '/',
 
   organizationName: 'sinhaparth5',
@@ -45,7 +47,7 @@ const config: Config = {
   ],
 
   stylesheets: [
-    'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap',
+    'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap',
   ],
 
   presets: [
@@ -61,6 +63,10 @@ const config: Config = {
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
+            title: 'Coraza WAF Mod Blog',
+            description: 'Technical deep-dives, release notes, and security insights from the Coraza WAF Mod team.',
+            copyright: `Copyright © ${new Date().getFullYear()} Coraza WAF Mod Contributors.`,
+            language: 'en',
           },
           editUrl: 'https://gitlab.com/sinhaparth5/coraza-waf-mod/-/edit/main/',
           onInlineTags: 'warn',
@@ -70,12 +76,36 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: null,
+          priority: null,
+          ignorePatterns: ['/tags/**', '/blog/tags/**'],
+          filename: 'sitemap.xml',
+        },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    // Default og:image for pages that don't set their own
+    image: 'img/seo_image.jpg',
+
+    // Global meta tags injected into every page <head>
+    metadata: [
+      {
+        name: 'keywords',
+        content:
+          'web application firewall, WAF, coraza, owasp crs, security, reverse proxy, go, golang, waf mod, ip blocking, geo blocking, rate limiting, TLS, bot protection',
+      },
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {name: 'twitter:site', content: '@parth_sinha18'},
+      {name: 'twitter:creator', content: '@parth_sinha18'},
+      {property: 'og:type', content: 'website'},
+      {property: 'og:site_name', content: 'Coraza WAF Mod'},
+      {property: 'og:locale', content: 'en_US'},
+    ],
+
     colorMode: {
       respectPrefersColorScheme: true,
     },

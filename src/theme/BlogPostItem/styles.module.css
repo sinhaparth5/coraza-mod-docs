@@ -1,0 +1,247 @@
+/* ══════════════════════════════════════════════════════════
+   Article detail page
+   ══════════════════════════════════════════════════════════ */
+
+.article {
+  max-width: none;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ifm-color-content-secondary) !important;
+  text-decoration: none !important;
+  margin-bottom: 2rem;
+  transition: color 0.15s;
+}
+
+.backLink:hover {
+  color: #990026 !important;
+}
+
+.header {
+  margin-bottom: 0;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.headerDate {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ifm-color-content-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.headerRule {
+  height: 1px;
+  background: var(--ifm-color-emphasis-300);
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ifm-color-content);
+  margin: 0 0 1.5rem;
+}
+
+.authors {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+/* BlogAuthor renders Infima .avatar — zero its default bottom margin */
+.author {
+  margin-bottom: 0 !important;
+}
+
+.readTime {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+  align-self: center;
+}
+
+/* Three-dot ornament between header and body */
+.bodyDivider {
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.bodyDivider::before {
+  content: '· · ·';
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.45em;
+  color: #990026;
+}
+
+.body {
+  contain: layout;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Blog list card
+   ══════════════════════════════════════════════════════════ */
+
+.card {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Log-style ISO date in monospace — ties to the WAF/security domain */
+.cardDate {
+  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--ifm-color-content-secondary);
+  letter-spacing: 0.02em;
+}
+
+.cardRule {
+  height: 1px;
+  background: var(--ifm-color-emphasis-200);
+  margin-bottom: 1rem;
+}
+
+.cardTitleLink {
+  display: block;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.cardTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ifm-color-content);
+  margin: 0 0 0.625rem;
+  transition: color 0.15s;
+}
+
+.cardTitleLink:hover .cardTitle {
+  color: #990026;
+}
+
+.cardExcerpt {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ifm-color-content-secondary);
+  margin: 0 0 1.125rem;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.cardAuthors {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.cardAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--ifm-color-content);
+}
+
+.cardAvatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cardReadTime {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.775rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.cardReadMore {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.775rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #990026 !important;
+  text-decoration: none !important;
+  transition: opacity 0.15s;
+}
+
+.cardReadMore:hover {
+  opacity: 0.7;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Shared: tag chips (used in both list and detail)
+   ══════════════════════════════════════════════════════════ */
+
+.tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #990026 !important;
+  background: rgba(153, 0, 38, 0.07);
+  padding: 0.175rem 0.45rem;
+  border-radius: 0.2rem;
+  text-decoration: none !important;
+  transition: background 0.15s;
+}
+
+.tag:hover {
+  background: rgba(153, 0, 38, 0.13);
+}

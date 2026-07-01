@@ -509,3 +509,67 @@ a.menu__link--active:not(.menu__link--sublist) {
 [data-theme='dark'] .pagination-nav__label {
   color: #9fe0b7 !important;
 }
+
+/* ── Blog post article body typography ─────────────────────────────────────── */
+
+.blog-article-body .markdown p,
+.blog-article-body .markdown li {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.blog-article-body .markdown h2 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  margin-top: 2.5rem !important;
+}
+
+.blog-article-body .markdown h3 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+}
+
+/* Pull quote — blockquote becomes a centered editorial moment */
+.blog-article-body .markdown blockquote {
+  border-left: none !important;
+  background: none !important;
+  padding: 0 !important;
+  margin: 3rem 1rem !important;
+  text-align: center !important;
+}
+
+.blog-article-body .markdown blockquote p {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  line-height: 1.5 !important;
+  color: var(--ifm-color-content) !important;
+}
+
+.blog-article-body .markdown blockquote p::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: #990026;
+  margin: 0 auto 1.25rem;
+}
+
+.blog-article-body .markdown blockquote p::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: #990026;
+  margin: 1.25rem auto 0;
+}
+
+[data-theme='dark'] .blog-article-body .markdown blockquote p {
+  color: #e8f5f8 !important;
+}

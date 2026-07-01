@@ -1,19 +1,19 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+release:
+  label: Release
+  permalink: /release
+  description: Product releases and version announcements.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+security:
+  label: Security
+  permalink: /security
+  description: Web application security, WAF rules, and threat intelligence.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+waf:
+  label: WAF
+  permalink: /waf
+  description: Web Application Firewall topics.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+go:
+  label: Go
+  permalink: /go
+  description: Posts about the Go programming language and ecosystem.
