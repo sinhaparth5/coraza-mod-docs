@@ -1,168 +1,520 @@
-/* ── Hero ─────────────────────────────────────────────────────────────────── */
+/* ── Shared layout ────────────────────────────────────────────────────────── */
+
+.sectionInner {
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Hero — HeroV6.png layout: Gradient bg, Shape at 570px height ────────── */
+
+/*
+  Layout picture (matches HeroV6.png):
+
+  ┌─────────────────────────────────────────────────────────┐
+  │  [eyebrow]                                              │
+  │  [H1 title — large, dark, 2 lines]                     │  ← top-left, ~200px
+  │                                                         │
+  │     [  S  H  A  P  E    (circle+pill grid)  ]          │  ← 570px tall
+  │                           [description text]           │
+  │                           [button]  [button]           │  ← bottom-right
+  └─────────────────────────────────────────────────────────┘
+
+  Shape natural: 1222×747px → displayed at height 570px → width ≈ 932px
+  Shape left edge starts at page left-margin (~8-9% from section left)
+  Title sits above the shape vertically; CTAs sit bottom-right
+*/
 
 .hero {
-  background: #2b5c74;
   position: relative;
-  min-height: 75dvh;
-  padding: 3.5rem 1.5rem 8rem;
   overflow: hidden;
+  /* title ~220px + shape 570px + 60px gap below = 850px */
+  min-height: 850px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  align-items: stretch;
 }
 
-.heroCurve {
+/* Gradient.png — full-cover background */
+.heroBg {
   position: absolute;
-  right: -3rem;
-  bottom: 8rem;
-  width: 95vw;
-  max-width: 1520px;
-  height: auto;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.7;
 }
 
-.heroContent {
-  position: relative;
+/*
+  Shape.png — 570px tall, proportional width (~932px).
+  Positioned so its left edge aligns with page content margin (≈8% of section),
+  and its top starts just below where the H1 title ends (~200px from hero top).
+*/
+.heroShape {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 200px;
+  height: 570px;
+  width: auto;
   z-index: 1;
-  max-width: 860px;
+  pointer-events: none;
+  filter: saturate(1.35) drop-shadow(0 8px 40px rgba(120, 100, 220, 0.18));
+}
+
+/*
+  Grid: two columns.
+  - Col 1, row 1: title (align-self: start — stays pinned to top)
+  - Col 2, row 2: description + CTAs (align-self: end — falls to bottom)
+  min-height matches .hero so the bottom row actually reaches the bottom.
+*/
+.heroGrid {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  text-align: center;
+  margin: 0 auto;
+  padding: 4rem 2rem 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  /* subtract the vertical padding from min-height */
+  min-height: calc(850px - 7.5rem);
+}
+
+.heroLeft {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+}
+
+.heroRight {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  padding-bottom: 2.5rem;
+  padding-left: 6rem;
 }
 
 .heroEyebrow {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  padding: 0.375rem 1rem;
-  border-radius: 999px;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #2b5c74;
+  background: rgba(43,92,116,0.08);
+  border: 1px solid rgba(43,92,116,0.18);
+  border-radius: 999px;
+  padding: 0.3rem 0.875rem;
+  margin-bottom: 1.25rem;
 }
 
 .heroTitle {
-  font-size: clamp(2.25rem, 5.5vw, 4.25rem) !important;
-  font-weight: 800 !important;
-  color: #fff !important;
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem) !important;
+  font-weight: 700 !important;
   line-height: 1.08 !important;
-  letter-spacing: -0.025em !important;
+  letter-spacing: -0.03em;
+  color: #0d2b3a !important;
   margin: 0 !important;
 }
 
 .heroSubtitle {
-  font-size: 1.1875rem;
-  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
   line-height: 1.65;
-  max-width: 560px;
-  margin: 0;
-  font-weight: 400;
+  color: #4a6070;
+  margin: 0 0 1.75rem;
+  max-width: 380px;
 }
 
 .heroButtons {
   display: flex;
-  gap: 0.875rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
-/* Green primary CTA on navy hero — high contrast (>7:1) */
+/* Buttons — light/gradient background */
 .btnPrimary {
-  background: #76c893;
-  color: #0f2620 !important;
-  padding: 0.8125rem 1.625rem;
-  border-radius: 0.5rem;
-  font-weight: 700;
-  font-size: 1rem;
-  text-decoration: none !important;
-  border: 2px solid #76c893;
-  white-space: nowrap;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   display: inline-flex;
   align-items: center;
+  background: #2b5c74;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.18s, transform 0.12s;
+  white-space: nowrap;
 }
 
 .btnPrimary:hover {
-  background: #5cbd80;
-  border-color: #5cbd80;
-  color: #0f2620 !important;
+  background: #1c3f52;
   transform: translateY(-1px);
-  text-decoration: none !important;
-}
-
-.btnPrimary:active {
-  transform: translateY(0) scale(0.98);
 }
 
 .btnSecondary {
-  background: transparent;
-  color: #fff !important;
-  padding: 0.8125rem 1.625rem;
-  border-radius: 0.5rem;
-  font-weight: 700;
-  font-size: 1rem;
-  text-decoration: none !important;
-  border: 2px solid rgba(255, 255, 255, 0.42);
-  white-space: nowrap;
-  transition: border-color 0.15s ease, transform 0.15s ease;
   display: inline-flex;
   align-items: center;
+  background: rgba(255,255,255,0.6);
+  color: #0d2b3a !important;
+  border: 1.5px solid rgba(13,43,58,0.2);
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.18s, transform 0.12s;
+  white-space: nowrap;
 }
 
 .btnSecondary:hover {
-  border-color: #fff;
-  color: #fff !important;
+  background: rgba(255,255,255,0.9);
   transform: translateY(-1px);
+}
+
+/* Dark-background buttons (install section) */
+.btnPrimaryDark {
+  display: inline-flex;
+  align-items: center;
+  background: #76c893;
+  color: #0d2b3a !important;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
   text-decoration: none !important;
+  transition: background 0.18s, transform 0.12s;
+  white-space: nowrap;
 }
 
-.btnSecondary:active {
-  transform: translateY(0) scale(0.98);
+.btnPrimaryDark:hover {
+  background: #5db87e;
+  transform: translateY(-1px);
 }
 
-.heroBrowserWrap {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1100px;
+.btnSecondaryDark {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: border-color 0.18s, background 0.18s, transform 0.12s;
+  white-space: nowrap;
 }
 
-.heroWave {
+.btnSecondaryDark:hover {
+  border-color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+/* Tablet — keep two columns but ease the right padding */
+@media (max-width: 1024px) {
+  .heroRight {
+    padding-left: 2rem;
+  }
+}
+
+/* Phablet / large mobile — single column hero, shape flows below */
+@media (max-width: 768px) {
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    min-height: unset;
+  }
+
+  /*
+    Shape goes out of absolute positioning and becomes a normal
+    flex child that appears below the text grid (order: 1 on shape,
+    heroGrid defaults to order: 0 so it shows first).
+  */
+  .heroShape {
+    position: relative;
+    left: unset;
+    top: unset;
+    transform: none;
+    order: 1;
+    width: 100%;
+    height: auto;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .heroGrid {
+    order: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    padding: 3rem 1.25rem 1.5rem;
+    min-height: unset;
+  }
+
+  .heroLeft {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .heroRight {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-top: 1.5rem;
+  }
+
+  /* Scale shapes down to 55% and anchor from their corner so they peek in */
+  .shapeTopRight {
+    transform: scale(0.55);
+    transform-origin: top right;
+  }
+
+  .shapeTopLeft {
+    transform: scale(0.55);
+    transform-origin: top left;
+  }
+
+  .shapeBottomLeft {
+    transform: scale(0.55);
+    transform-origin: bottom left;
+  }
+
+  .shapeBottomRight {
+    transform: scale(0.55);
+    transform-origin: bottom right;
+  }
+
+  .shapeRightCenter {
+    display: none;
+  }
+
+  /* Dashboard */
+  .dashSection {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .dashCaption {
+    font-size: 1rem;
+  }
+
+  /* Stats */
+  .stats {
+    padding: 2.5rem 1.25rem;
+  }
+
+  /* Features */
+  .features {
+    padding: 4rem 1.25rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 2.5rem;
+  }
+
+  /* Architecture */
+  .architecture {
+    padding: 4rem 1.25rem;
+  }
+
+  .archHeader {
+    margin-bottom: 2rem;
+  }
+
+  /* Install */
+  .install {
+    padding: 4rem 1.25rem;
+  }
+
+  .codeBlock {
+    font-size: 0.8rem;
+    padding: 1rem 1rem;
+    word-break: break-all;
+  }
+
+  .installCtaRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnPrimaryDark,
+  .btnSecondaryDark {
+    justify-content: center;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  /* Shrink shapes further on very narrow screens */
+  .shapeTopRight,
+  .shapeTopLeft,
+  .shapeBottomLeft,
+  .shapeBottomRight {
+    transform: scale(0.38);
+  }
+
+  .shapeRightCenter {
+    display: none;
+  }
+
+  .heroTitle {
+    font-size: 2.1rem !important;
+  }
+
+  .heroEyebrow {
+    font-size: 0.7rem;
+  }
+
+  .dashSection {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .stats {
+    padding: 2rem 1rem;
+  }
+
+  .statsGrid {
+    gap: 1.25rem;
+  }
+
+  .features {
+    padding: 3rem 1rem;
+  }
+
+  .featureCard {
+    padding: 1.25rem;
+  }
+
+  .architecture {
+    padding: 3rem 1rem;
+  }
+
+  .install {
+    padding: 3rem 1rem;
+  }
+
+  .installInner {
+    max-width: 100%;
+  }
+}
+
+/* ── Shared shape position helpers ───────────────────────────────────────── */
+/* Sections using these must have position:relative + overflow:hidden */
+
+.shapeTopRight {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 8rem;
-  display: block;
+  top: -20px;
+  right: -20px;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* ── Hero Image ──────────────────────────────────────────────────────────── */
+.shapeTopLeft {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  pointer-events: none;
+  z-index: 0;
+}
 
-.heroImage {
+.shapeBottomLeft {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shapeBottomRight {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shapeRightCenter {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Dashboard showcase ───────────────────────────────────────────────────── */
+
+/* Same soft gradient family as hero Gradient.png, shifted to sage/mint */
+.dashSection {
+  background: linear-gradient(155deg, #eef9f4 0%, #e8f4f9 55%, #f0f0ff 100%);
+  padding: 5rem 2rem 6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dashLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2b5c74;
+  margin-bottom: 0.75rem;
+}
+
+.dashCaption {
+  font-size: 1.0625rem;
+  color: #4a6070;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.dashFrame {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(43,92,116,0.1),
+    0 12px 48px rgba(13,43,58,0.18),
+    0 2px 8px rgba(13,43,58,0.08);
+  background: #0d2b3a;
+  line-height: 0;
+  /* ensure image is never constrained by a height */
+  height: auto;
+}
+
+.dashImage {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 1rem;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32), 0 8px 24px rgba(0, 0, 0, 0.16);
+  border-radius: 14px;
+  /* prevent any browser from shrinking the image */
+  max-width: 100%;
 }
 
 /* ── Stats ────────────────────────────────────────────────────────────────── */
 
 .stats {
-  background: #fff;
-  padding: 4rem 1.5rem;
-  border-bottom: 1px solid #e2e5ea;
+  background: #ffffff;
+  border-bottom: 1px solid #e4efea;
+  padding: 3.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .statsGrid {
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -170,62 +522,76 @@
 }
 
 .statItem {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding-left: 0.25rem;
+  border-left: 2px solid #e8edf3;
+}
+
+.statAccent {
+  width: 32px;
+  height: 3px;
+  background: linear-gradient(90deg, #76c893, #4aad72);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
 }
 
 .statValue {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
-  color: #2b5c74;
-  letter-spacing: -0.03em;
+  color: #0d2b3a;
   line-height: 1;
-  margin-bottom: 0.375rem;
 }
 
 .statUnit {
   font-size: 1rem;
-  font-weight: 600;
-  color: #2a9d8f;
+  font-weight: 500;
+  color: #2b5c74;
 }
 
 .statLabel {
-  font-size: 0.875rem;
-  color: #6a8898;
+  font-size: 0.8125rem;
+  color: #6b7f8e;
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ── Features ─────────────────────────────────────────────────────────────── */
 
 .features {
-  background: #f4f7f9;
+  /* sage→periwinkle gradient — same family as hero, shifted green */
+  background: linear-gradient(145deg, #edf8f3 0%, #eef5fb 100%);
   padding: 6rem 1.5rem;
-}
-
-.sectionInner {
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .sectionHeader {
   text-align: center;
-  max-width: 640px;
+  max-width: 580px;
   margin: 0 auto 3.5rem;
 }
 
 .sectionTitle {
-  font-size: clamp(1.875rem, 3.5vw, 2.5rem) !important;
-  font-weight: 800 !important;
-  color: #2b5c74 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 1.2 !important;
-  margin-bottom: 0.875rem !important;
+  font-size: clamp(1.75rem, 3.5vw, 2.375rem) !important;
+  font-weight: 700 !important;
+  color: #0d2b3a !important;
+  margin: 0 0 0.875rem !important;
+  letter-spacing: -0.02em;
 }
 
 .sectionSubtitle {
   font-size: 1.0625rem;
-  color: #4a7b96;
-  line-height: 1.65;
+  color: #4a6070;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -235,80 +601,120 @@
   gap: 1.25rem;
 }
 
+@media (max-width: 900px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .featureCard {
+  position: relative;
   background: #fff;
-  border: 1px solid #e2e5ea;
-  border-radius: 1rem;
+  border: 1px solid #dde4f2;
+  border-radius: 14px;
   padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s, transform 0.2s;
+  overflow: hidden;
+}
+
+.featureCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #76c893, #4aad72);
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .featureCard:hover {
+  box-shadow: 0 8px 32px rgba(13,43,58,0.1);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(43, 92, 116, 0.1);
-  border-color: rgba(118, 200, 147, 0.5);
+}
+
+.featureCard:hover::after {
+  opacity: 1;
 }
 
 .featureIcon {
-  width: 44px;
-  height: 44px;
-  background: #eaf7ee;
-  border-radius: 0.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2a9d8f;
-  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d6f5e5 0%, #c0ebd1 100%);
+  color: #2d8f5a;
+  margin-bottom: 1rem;
 }
 
 .featureTitle {
-  font-size: 1.0625rem !important;
+  font-size: 1rem !important;
   font-weight: 700 !important;
-  color: #2b5c74 !important;
-  margin: 0 !important;
+  color: #0d2b3a !important;
+  margin: 0 0 0.5rem !important;
 }
 
 .featureDesc {
-  font-size: 0.9375rem;
-  color: #4a7b96;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  color: #5a7080;
+  line-height: 1.6;
   margin: 0;
 }
 
 /* ── Architecture ─────────────────────────────────────────────────────────── */
 
 .architecture {
-  background: #162d3a;
+  background: #0d2b3a;
   padding: 6rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient green glow behind content */
+.architecture::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(58,157,110,0.25) 0%, transparent 65%);
+  filter: blur(80px);
+  pointer-events: none;
 }
 
 .archHeader {
-  max-width: 720px;
-  margin: 0 auto 3rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .archTitle {
-  font-size: clamp(1.875rem, 3.5vw, 2.5rem) !important;
-  font-weight: 800 !important;
+  font-size: clamp(1.75rem, 3.5vw, 2.375rem) !important;
+  font-weight: 700 !important;
   color: #fff !important;
-  letter-spacing: -0.025em !important;
-  line-height: 1.2 !important;
-  margin: 0 !important;
+  margin: 0 0 1rem !important;
+  letter-spacing: -0.02em;
 }
 
 .archDesc {
-  font-size: 1.0625rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255,255,255,0.65);
+  font-size: 1rem;
   line-height: 1.65;
-  margin: 0;
+  margin: 0 0 1.25rem;
 }
 
 .archList {
@@ -316,69 +722,123 @@
   padding: 0;
   margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 1.5rem;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
 }
 
 .archList li {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-  padding-left: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  padding-left: 1.25rem;
   position: relative;
-  line-height: 1.5;
 }
 
 .archList li::before {
-  content: '';
+  content: '→';
   position: absolute;
   left: 0;
-  top: 0.55em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #76c893;
+  color: #76c893;
 }
 
 .archImage {
-  width: 75%;
-  max-width: 860px;
-  height: auto;
+  position: relative;
+  z-index: 1;
   display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
   margin: 0 auto;
-  border-radius: 1rem;
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  box-shadow: 0 20px 64px rgba(0,0,0,0.4);
 }
 
-/* ── Install ──────────────────────────────────────────────────────────────── */
+/* ── Install / CTA — dark navy + Group27169-adapted footer blobs ──────────── */
 
 .install {
-  background: #fff;
+  background: #071520;
   padding: 6rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Footer blob SVG wrappers */
+.footerBlobWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footerBlobRightA {
+  position: absolute;
+  right: -400px;
+  top: -300px;
+  width: 900px;
+  height: auto;
+  opacity: 0.85;
+}
+
+.footerBlobLeft {
+  position: absolute;
+  left: -600px;
+  bottom: -300px;
+  width: 1000px;
+  height: auto;
+  opacity: 0.7;
+}
+
+.footerBlobRightB {
+  position: absolute;
+  right: -350px;
+  top: -200px;
+  width: 850px;
+  height: auto;
+  opacity: 0.55;
 }
 
 .installInner {
-  max-width: 640px;
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
   margin: 0 auto;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
+}
+
+.installTitle {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin: 0 0 1.25rem !important;
+  letter-spacing: -0.02em;
+}
+
+.installSubtitle {
+  color: rgba(255,255,255,0.65);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 0 2rem;
+}
+
+.installSubtitle code {
+  color: #76c893;
+  background: rgba(118,200,147,0.12);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
 }
 
 .codeBlock {
-  background: #162d3a;
-  border-radius: 0.75rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
   padding: 1.25rem 1.5rem;
-  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-  font-size: 0.9375rem;
-  color: #cde8f5;
-  width: min(820px, 90vw);
   text-align: left;
-  white-space: pre;
+  font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 1.25rem;
   overflow-x: auto;
 }
 
@@ -388,176 +848,23 @@
 }
 
 .installNote {
-  font-size: 0.9375rem;
-  color: #4a7b96;
-  margin: 0;
-  line-height: 1.55;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.45);
+  margin: 0 0 2rem;
+  line-height: 1.6;
 }
 
 .installNote code {
-  background: #eaf7ee;
-  color: #1a3a2a;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
 }
 
-/* ── Dark mode ────────────────────────────────────────────────────────────── */
-
-:global([data-theme='dark']) .stats {
-  background: var(--ifm-background-color);
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-:global([data-theme='dark']) .statValue {
-  color: #9fe0b7;
-}
-
-:global([data-theme='dark']) .statLabel {
-  color: #8aaabb;
-}
-
-:global([data-theme='dark']) .features {
-  background: var(--ifm-background-surface-color, #1b1b1d);
-}
-
-:global([data-theme='dark']) .featureCard {
-  background: var(--ifm-background-color);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-:global([data-theme='dark']) .featureTitle {
-  color: #e8f5f8 !important;
-}
-
-:global([data-theme='dark']) .featureDesc {
-  color: #8aaabb;
-}
-
-:global([data-theme='dark']) .sectionTitle {
-  color: #e8f5f8 !important;
-}
-
-:global([data-theme='dark']) .sectionSubtitle {
-  color: #8aaabb;
-}
-
-:global([data-theme='dark']) .install {
-  background: var(--ifm-background-color);
-}
-
-:global([data-theme='dark']) .installNote {
-  color: #8aaabb;
-}
-
-:global([data-theme='dark']) .installNote code {
-  background: rgba(118, 200, 147, 0.1);
-  color: #9fe0b7;
-}
-
-:global([data-theme='dark']) .heroWave path {
-  fill: var(--ifm-background-color);
-}
-
-:global([data-theme='dark']) .browser {
-  border-color: #2a4a5a;
-}
-
-:global([data-theme='dark']) .browserBar {
-  background: #1a3040;
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-:global([data-theme='dark']) .browserUrl {
-  background: #162d3a;
-}
-
-:global([data-theme='dark']) .dashCard,
-:global([data-theme='dark']) .dashChart,
-:global([data-theme='dark']) .dashSide,
-:global([data-theme='dark']) .dashLogs {
-  background: #1a3040;
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-:global([data-theme='dark']) .dashLogRow {
-  border-bottom-color: rgba(255, 255, 255, 0.04);
-}
-
-/* ── Responsive ───────────────────────────────────────────────────────────── */
-
-@media (max-width: 1024px) {
-  .archHeader {
-    margin-bottom: 2.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 3rem 1.25rem 7rem;
-    gap: 1.5rem;
-  }
-
-  .heroWave {
-    height: 7rem;
-  }
-
-  .heroCurve {
-    bottom: 7rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1rem;
-  }
-
-  .heroButtons {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .btnPrimary,
-  .btnSecondary {
-    justify-content: center;
-  }
-
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 1rem;
-  }
-
-  .featuresGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-height: 800px) {
-  .hero {
-    padding-top: 2.5rem;
-    padding-bottom: 7rem;
-  }
-
-  .heroBrowserWrap {
-    display: none;
-  }
-
-  .heroWave {
-    height: 7rem;
-  }
-
-  .heroCurve {
-    bottom: 7rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .codeBlock {
-    font-size: 0.8125rem;
-  }
+.installCtaRow {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
