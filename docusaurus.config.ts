@@ -34,6 +34,10 @@ const config: Config = {
   headTags: [
     {
       tagName: 'link',
+      attributes: {rel: 'manifest', href: '/manifest.json'},
+    },
+    {
+      tagName: 'link',
       attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'},
     },
     {
@@ -77,7 +81,7 @@ const config: Config = {
           customCss: './src/css/custom.css',
         },
         sitemap: {
-          lastmod: 'date',
+          lastmod: null,
           changefreq: null,
           priority: null,
           ignorePatterns: ['/tags/**', '/blog/tags/**'],
