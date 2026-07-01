@@ -16,6 +16,8 @@ Node toolchain** — one binary, one SQLite file.
   <img
     src="/img/arch_diagram_white-bg.png"
     alt="Coraza WAF Mod Architecture: User Request → Cloudflare → OS Firewall → Coraza WAF Proxy (with SQLite waf.db and HTMX/Tailwind Admin Dashboard) → Application Service"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem'}}
   />
 </div>

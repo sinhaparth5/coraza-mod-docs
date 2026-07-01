@@ -28,6 +28,8 @@ than merely score. This is handled internally.
   <img
     src="/img/docs/docs_waf_rules.png"
     alt="WAF Rules page showing the Disable Rule form with CRS Rule ID and reason fields, Top Firing Rules analytics table with hit counts, and the Disabled Rules list"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>

@@ -21,6 +21,8 @@ geo, WAF engine, rate limiter). The steps below are the implementation.
   <img
     src="/img/docs/docs_dashboard.png"
     alt="Coraza WAF Mod dashboard home — live traffic chart, requests today, blocked today, bot shield summary, and top threats panel"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>
@@ -49,6 +51,8 @@ geo, WAF engine, rate limiter). The steps below are the implementation.
   <img
     src="/img/docs/docs_service.png"
     alt="Services page showing the Add Service wizard on the left and the configured services list on the right with host match, TLS, rate limit, and bot mode controls per row"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>
@@ -94,6 +98,8 @@ on change. See [IP & Geo Blocking](/docs/security/blocking) for how they fit the
   <img
     src="/img/docs/docs_ip_rules.png"
     alt="IP Rules page — Add IP Rule form on the left with IP/CIDR input, scope selector, and block/allow toggle; Active IP Rules list on the right with rules overview stats"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>
@@ -119,6 +125,8 @@ These manual rules are evaluated alongside the IPs pulled in automatically by
   <img
     src="/img/docs/docs_geo_block.png"
     alt="Geo Rules page — Add Geo Rule form with country code input and block/allow selector; Active Geo Rules list showing a CN block rule with global scope and rules overview stats"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>
@@ -186,6 +194,8 @@ force history mode with `?mode=history`.
   <img
     src="/img/docs/docs_logs.png"
     alt="Live Logs page showing the live stream active indicator, date/app/status filters, and the request log table with time, app, IP, method, path, status, and duration columns"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>
@@ -209,6 +219,8 @@ rule (if any), the block reason/stage, status, and the resolved country/ASN.
   <img
     src="/img/docs/docs_logs_detail.png"
     alt="Log detail view showing timestamp, app/service, host, real client IP vs proxy/CDN IP, country, query string, user agent, request ID, ASN, ISP/organisation, and TLS connection details"
+    width={900}
+    height={900}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>
@@ -229,6 +241,8 @@ and downloads a CSV of the matching rows — so you can export exactly what you'
   <img
     src="/img/docs/docs_settings.png"
     alt="Settings page showing the Account section with current email, new email, new password, and confirm password fields, plus the Database backup download button"
+    width={900}
+    height={1000}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>

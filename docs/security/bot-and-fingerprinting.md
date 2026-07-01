@@ -28,6 +28,8 @@ per-service overrides from each service's Manage panel. See the
   <img
     src="/img/docs/docs_bot_protection.png"
     alt="Bot Protection settings panel showing the enable toggle, anomaly threshold field set to 8, and bypass cookie TTL field set to 3600 seconds"
+    width={900}
+    height={500}
     style={{maxWidth: '100%', borderRadius: '0.5rem', border: '1px solid #e2e5ea'}}
   />
 </div>

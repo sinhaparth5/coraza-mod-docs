@@ -130,6 +130,8 @@ function AvatarStack({users}: {users: GitLabUser[]}) {
           <img
             src={u.avatar_url}
             alt={u.name}
+            width={900}
+            height={500}
             className={styles.avatarImg}
             onError={(e) => {
               const el = e.currentTarget;

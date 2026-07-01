@@ -121,6 +121,8 @@ export default function BlogPostItem(props: Props): ReactNode {
                     <img
                       src={imgUrl}
                       alt={author.name}
+                      width={900}
+                      height={500}
                       className={styles.cardAvatar}
                       loading="lazy"
                     />

@@ -177,6 +177,8 @@ function HeroSection() {
           src="/img/hero_image.png"
           alt="Coraza WAF Mod admin dashboard"
           className={styles.heroImage}
+          width={1200}
+          height={700}
         />
       </div>
 
@@ -269,6 +271,8 @@ function ArchitectureSection() {
         <img
           src="/img/arch_diagram.png"
           alt="Coraza WAF Mod request pipeline: Client → Bot Gate → IP Blocklist → Rate Limiting → Geo Blocking → WAF Inspection → Reverse Proxy → Backend Applications"
+          width={1200}
+          height={700}
           className={styles.archImage}
         />
       </div>
