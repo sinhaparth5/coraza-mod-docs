@@ -87,6 +87,13 @@ const config: Config = {
           ignorePatterns: ['/tags/**', '/blog/tags/**'],
           filename: 'sitemap.xml',
         },
+        gtag: {
+          trackingID: 'G-R8GXDLB8L1',
+          anonymizeIP: false,
+        },
+        googleTagManager: {
+          containerId: 'GTM-NPSXB8DG',
+        },
       } satisfies Preset.Options,
     ],
   ],
